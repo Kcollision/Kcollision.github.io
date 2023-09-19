@@ -1,12 +1,12 @@
-http://kcollision.github.io/2023/09ec1c1d6a.html
+http://kcollision.github.io/2023/091fd31e92.html
 http://kcollision.github.io/2023/075d3fe4de.html
 http://kcollision.github.io/2023/08c13cf946.html
 http://kcollision.github.io/about/index.html
 http://kcollision.github.io/
-http://kcollision.github.io/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/
 http://kcollision.github.io/tags/c/
 http://kcollision.github.io/tags/codeforces/
 http://kcollision.github.io/tags/python/
 http://kcollision.github.io/tags/%E7%A4%BE%E4%BC%9A%E7%BD%91%E7%BB%9C/
+http://kcollision.github.io/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/
 http://kcollision.github.io/categories/codeforces/
 http://kcollision.github.io/categories/python/

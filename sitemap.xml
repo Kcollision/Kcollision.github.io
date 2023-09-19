@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://kcollision.github.io/2023/09ec1c1d6a.html</loc>
+    <loc>http://kcollision.github.io/2023/091fd31e92.html</loc>
     
     <lastmod>2023-09-19</lastmod>
     
@@ -47,13 +47,6 @@
 
   
   <url>
-    <loc>http://kcollision.github.io/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/</loc>
-    <lastmod>2023-09-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://kcollision.github.io/tags/c/</loc>
     <lastmod>2023-09-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -76,6 +69,13 @@
   
   <url>
     <loc>http://kcollision.github.io/tags/%E7%A4%BE%E4%BC%9A%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2023-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://kcollision.github.io/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/</loc>
     <lastmod>2023-09-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
