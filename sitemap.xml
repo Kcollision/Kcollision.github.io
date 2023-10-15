@@ -4,7 +4,7 @@
   <url>
     <loc>http://kcollision.github.io/2023/091fd31e92.html</loc>
     
-    <lastmod>2023-09-30</lastmod>
+    <lastmod>2023-10-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -40,7 +40,7 @@
 
   <url>
     <loc>http://kcollision.github.io/</loc>
-    <lastmod>2023-10-07</lastmod>
+    <lastmod>2023-10-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -48,35 +48,35 @@
   
   <url>
     <loc>http://kcollision.github.io/tags/c/</loc>
-    <lastmod>2023-10-07</lastmod>
+    <lastmod>2023-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://kcollision.github.io/tags/codeforces/</loc>
-    <lastmod>2023-10-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://kcollision.github.io/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/</loc>
-    <lastmod>2023-10-07</lastmod>
+    <lastmod>2023-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://kcollision.github.io/tags/python/</loc>
-    <lastmod>2023-10-07</lastmod>
+    <lastmod>2023-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://kcollision.github.io/tags/%E7%A4%BE%E4%BC%9A%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2023-10-07</lastmod>
+    <lastmod>2023-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://kcollision.github.io/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/</loc>
+    <lastmod>2023-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -85,14 +85,14 @@
   
   <url>
     <loc>http://kcollision.github.io/categories/codeforces/</loc>
-    <lastmod>2023-10-07</lastmod>
+    <lastmod>2023-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://kcollision.github.io/categories/python/</loc>
-    <lastmod>2023-10-07</lastmod>
+    <lastmod>2023-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
