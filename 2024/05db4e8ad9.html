@@ -23,16 +23,16 @@
 <meta property="og:site_name" content="collision&#39;s blog">
 <meta property="og:description" content="本文是学习南大袁春风老师MOOC的《计算机系统基础(一)》课程的第五周笔记.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/collision-kkk/photo-storage/raw/master/img/1.png">
-<meta property="og:image" content="https://gitee.com/collision-kkk/photo-storage/raw/master/img/2.png">
-<meta property="og:image" content="https://gitee.com/collision-kkk/photo-storage/raw/master/img/4.png">
-<meta property="og:image" content="https://gitee.com/collision-kkk/photo-storage/raw/master/img/image-20240521165939354.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Kcollision/BlogImage/main/img/1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Kcollision/BlogImage/main/img/2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Kcollision/BlogImage/main/img/4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Kcollision/BlogImage/main/img/image-20240521165939354.png">
 <meta property="article:published_time" content="2024-05-01T14:58:51.000Z">
-<meta property="article:modified_time" content="2024-05-24T16:28:06.717Z">
+<meta property="article:modified_time" content="2024-05-24T17:30:33.887Z">
 <meta property="article:author" content="collision">
 <meta property="article:tag" content="计算机组成原理">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://gitee.com/collision-kkk/photo-storage/raw/master/img/1.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Kcollision/BlogImage/main/img/1.png">
   
   
   
@@ -472,11 +472,11 @@
 </table>
 <p>IA-32由16位架构发展而来，因此虽然字长为32位，但一个字为16位，长度后缀为w；32位为双字，长度后缀为l，long double实际长度为80位，但分配96位=12B（按4B对齐）</p>
 <h3 id="IA-32的寄存器组织">IA-32的寄存器组织</h3>
-<img src="https://gitee.com/collision-kkk/photo-storage/raw/master/img/1.png" srcset="/img/loading.gif" lazyload alt="基本程序运行寄存器"  />
-<p><img src="https://gitee.com/collision-kkk/photo-storage/raw/master/img/2.png" srcset="/img/loading.gif" lazyload alt="通用寄存器"></p>
+<img src="https://raw.githubusercontent.com/Kcollision/BlogImage/main/img/1.png" srcset="/img/loading.gif" lazyload alt="基本程序运行寄存器"  />
+<p><img src="https://raw.githubusercontent.com/Kcollision/BlogImage/main/img/2.png" srcset="/img/loading.gif" lazyload alt="通用寄存器"></p>
 <p>反映了体系结构发展的轨迹，字长不断扩充，指令一直适配</p>
 <h3 id="IA-32的标志寄存器EFLAGS">IA-32的标志寄存器EFLAGS</h3>
-<p><img src="https://gitee.com/collision-kkk/photo-storage/raw/master/img/4.png" srcset="/img/loading.gif" lazyload alt="EFLAGS寄存器"></p>
+<p><img src="https://raw.githubusercontent.com/Kcollision/BlogImage/main/img/4.png" srcset="/img/loading.gif" lazyload alt="EFLAGS寄存器"></p>
 <ul>
 <li>
 <p>6个条件标志</p>
@@ -536,7 +536,7 @@
 </ul>
 <h3 id="高级语言中寻址举例">高级语言中寻址举例</h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> x;<br><span class="hljs-type">float</span> a[<span class="hljs-number">100</span>];<br><span class="hljs-type">short</span> b[<span class="hljs-number">4</span>][<span class="hljs-number">4</span>];<br><span class="hljs-type">char</span> c;<br><span class="hljs-type">double</span> d[<span class="hljs-number">10</span>];<br><span class="hljs-comment">//linux下double按4B对齐，windows下double按8B对齐</span><br><span class="hljs-comment">//windows下d[0]的地址必须是8的倍数</span><br></code></pre></td></tr></table></figure>
-<img src="https://gitee.com/collision-kkk/photo-storage/raw/master/img/image-20240521165939354.png" srcset="/img/loading.gif" lazyload alt="image-20240521165939354" style="zoom:80%;" />
+<img src="https://raw.githubusercontent.com/Kcollision/BlogImage/main/img/image-20240521165939354.png" srcset="/img/loading.gif" lazyload alt="image-20240521165939354" style="zoom:80%;" />
 <blockquote>
 <p>各变量的寻址方式?</p>
 <p><code>x</code> <code>c</code>：位移/基址</p>
