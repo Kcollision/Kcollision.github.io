@@ -1,0 +1,1050 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/%E5%9B%BE%E6%A0%87.jpg">
+  <link rel="icon" href="/img/%E5%9B%BE%E6%A0%87.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="collision">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本文是学习南大袁春风老师MOOC的《计算机系统基础(一)》课程的第五周笔记.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机系统基础(一)笔记——Week5 IA-32指令系统">
+<meta property="og:url" content="http://kcollision.github.io/2024/05db4e8ad9.html">
+<meta property="og:site_name" content="collision&#39;s blog">
+<meta property="og:description" content="本文是学习南大袁春风老师MOOC的《计算机系统基础(一)》课程的第五周笔记.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/collision-kkk/photo-storage/raw/master/img/1.png">
+<meta property="og:image" content="https://gitee.com/collision-kkk/photo-storage/raw/master/img/2.png">
+<meta property="og:image" content="https://gitee.com/collision-kkk/photo-storage/raw/master/img/4.png">
+<meta property="og:image" content="https://gitee.com/collision-kkk/photo-storage/raw/master/img/image-20240521165939354.png">
+<meta property="article:published_time" content="2024-05-01T14:58:51.000Z">
+<meta property="article:modified_time" content="2024-05-24T16:27:45.707Z">
+<meta property="article:author" content="collision">
+<meta property="article:tag" content="计算机组成原理">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/collision-kkk/photo-storage/raw/master/img/1.png">
+  
+  
+  
+  <title>计算机系统基础(一)笔记——Week5 IA-32指令系统 - collision&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"kcollision.github.io","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"du7wM5lleC8Hy8eux2iiDmMk-gzGzoHsz","app_key":"4WVbPZmycA5Zsvx9aaRQxa8O","server_url":"https://du7wm5ll.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 80vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>collision&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/%E9%BA%A6%E7%94%B0.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="计算机系统基础(一)笔记——Week5 IA-32指令系统"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-01 22:58" pubdate>
+          2024年5月1日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">计算机系统基础(一)笔记——Week5 IA-32指令系统</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2024年5月25日 凌晨
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>Week5 IA-32指令系统</h1>
+<h2 id="5-1-程序转换概述">5.1 程序转换概述</h2>
+<h3 id="机器级指令">机器级指令</h3>
+<ul>
+<li>机器指令和汇编指令一一对应，都是机器级指令</li>
+<li>机器指令是0/1序列，由若干字段组成</li>
+</ul>
+<blockquote>
+<p>100010 DW   mod            reg  r/m         disp8</p>
+<p>100010 0 0    01               001  001         11111010</p>
+<p>操作码            寻址方式    寄存器编号     立即数（位移量）</p>
+</blockquote>
+<ul>
+<li>
+<p>汇编指令是机器指令的符号表示（==可以有不同格式==）</p>
+<p><code>mov [bx+di-6],cl</code>表示功能<code>M[R[bx]+R[di]-6] &lt;- R[cl]  </code></p>
+<p>后面的是寄存器传送语言RTL，R寄存器内容，M存储单元内容</p>
+</li>
+</ul>
+<h3 id="两种目标文件">两种目标文件</h3>
+<p><code>test.o</code>可重定位目标文件，<code>test</code>可执行目标文件</p>
+<p><code>objdump -d test.o</code>反汇编后查看</p>
+<blockquote>
+<p>ISA规定了一台机器的指令系统涉及到的所有方面</p>
+<ul>
+<li>所有指令的指令格式、功能</li>
+<li>通用寄存器的个数、位数、编号和功能</li>
+<li>存储地址空间大小、编址方式、大/小端</li>
+<li>指令寻址方式</li>
+</ul>
+</blockquote>
+<h2 id="5-2-IA-32指令系统">5.2 IA-32指令系统</h2>
+<h3 id="IA-32-x64指令系统概述">IA-32/x64指令系统概述</h3>
+<ul>
+<li>x86是Intel开发的一类处理器体系结构的泛称</li>
+</ul>
+<p>​		包括Intel 8086、80286等，由于数字不能作为商标，改为了Pentium、Core 2、Core i7等</p>
+<p>​		现在Intel把32位x86架构的名称x86-32改为IA-32（Intel Architecture）</p>
+<ul>
+<li>
+<p>AMD首先提出了兼容IA-32指令集的64位版本</p>
+<p>扩充了指令和寄存器长度和个数等</p>
+<p>AMD称为AMD64，Intel称其为Intl64</p>
+<p>命名为x86-64（x64）</p>
+</li>
+</ul>
+<h3 id="IA-32">IA-32</h3>
+<ul>
+<li>
+<p>8个GPR(0-7)，一个EFLAGs，PC是EIP</p>
+</li>
+<li>
+<p>可寻址空间4GB（0-0xFFFFFFFF）</p>
+</li>
+<li>
+<p>指令格式变长、操作码变长、指令由若干字段（OP、Mod、SIB等）组成</p>
+</li>
+</ul>
+<h3 id="IA-32支持的数据类型和格式">IA-32支持的数据类型和格式</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">C语言声明</th>
+<th style="text-align:center">Intel操作数类型</th>
+<th style="text-align:center">汇编指令长度后缀</th>
+<th style="text-align:center">存储长度（位）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">(unsigned) char</td>
+<td style="text-align:center">整数/字节</td>
+<td style="text-align:center">b</td>
+<td style="text-align:center">8</td>
+</tr>
+<tr>
+<td style="text-align:center">(unsigned) short</td>
+<td style="text-align:center">整数/字</td>
+<td style="text-align:center">w</td>
+<td style="text-align:center">16</td>
+</tr>
+<tr>
+<td style="text-align:center">(unsigned) int</td>
+<td style="text-align:center">整数/双字</td>
+<td style="text-align:center">l</td>
+<td style="text-align:center">32</td>
+</tr>
+<tr>
+<td style="text-align:center">(unsigned) long int</td>
+<td style="text-align:center">整数/双字</td>
+<td style="text-align:center">l</td>
+<td style="text-align:center">32</td>
+</tr>
+<tr>
+<td style="text-align:center">(unsigned) long long int</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">2×32</td>
+</tr>
+<tr>
+<td style="text-align:center">char *</td>
+<td style="text-align:center">整数/双字</td>
+<td style="text-align:center">l</td>
+<td style="text-align:center">32</td>
+</tr>
+<tr>
+<td style="text-align:center">float</td>
+<td style="text-align:center">单精度浮点数</td>
+<td style="text-align:center">s</td>
+<td style="text-align:center">32</td>
+</tr>
+<tr>
+<td style="text-align:center">double</td>
+<td style="text-align:center">双精度浮点数</td>
+<td style="text-align:center">l</td>
+<td style="text-align:center">64</td>
+</tr>
+<tr>
+<td style="text-align:center">long double</td>
+<td style="text-align:center">扩展精度浮点数</td>
+<td style="text-align:center">t</td>
+<td style="text-align:center">80/96</td>
+</tr>
+</tbody>
+</table>
+<p>IA-32由16位架构发展而来，因此虽然字长为32位，但一个字为16位，长度后缀为w；32位为双字，长度后缀为l，long double实际长度为80位，但分配96位=12B（按4B对齐）</p>
+<h3 id="IA-32的寄存器组织">IA-32的寄存器组织</h3>
+<img src="https://gitee.com/collision-kkk/photo-storage/raw/master/img/1.png" srcset="/img/loading.gif" lazyload alt="基本程序运行寄存器"  />
+<p><img src="https://gitee.com/collision-kkk/photo-storage/raw/master/img/2.png" srcset="/img/loading.gif" lazyload alt="通用寄存器"></p>
+<p>反映了体系结构发展的轨迹，字长不断扩充，指令一直适配</p>
+<h3 id="IA-32的标志寄存器EFLAGS">IA-32的标志寄存器EFLAGS</h3>
+<p><img src="https://gitee.com/collision-kkk/photo-storage/raw/master/img/4.png" srcset="/img/loading.gif" lazyload alt="EFLAGS寄存器"></p>
+<ul>
+<li>
+<p>6个条件标志</p>
+<p>AF：辅助进位标志</p>
+<p>PF：奇偶标志</p>
+</li>
+<li>
+<p>3个控制标志</p>
+<p>DF（Direction Flag）：方向标志</p>
+<p>IF（Interrupt Flag）：中断允许标志</p>
+<p>TF（Trap Flag）：陷阱标志</p>
+</li>
+</ul>
+<h3 id="IA-32的寻址方式">IA-32的寻址方式</h3>
+<ul>
+<li>
+<p>操作数所在位置：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令中</th>
+<th style="text-align:center">寄存器中</th>
+<th style="text-align:center">存储单元中</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">立即寻址</td>
+<td style="text-align:center">寄存器寻址</td>
+<td style="text-align:center">（存储器操作数）其他寻址方式</td>
+</tr>
+</tbody>
+</table>
+<p>存储器操作数的寻址方式和微处理器的工作模式有关</p>
+<ul>
+<li>
+<p>实地址模式（基本用不到）</p>
+<p>为8086/8088兼容设置，加电或复位时</p>
+<p>寻址空间1MB，20位地址：(CS)&lt;&lt;4+(IP)</p>
+</li>
+<li>
+<p><strong>保护模式</strong>（需要掌握）</p>
+<p>加电后进入，采用虚拟存储管理，多任务情况下隔离、保护</p>
+<p>80286以上微处理器的工作模式</p>
+<p>存执空间2^32B(4G)，32位线性地址分段</p>
+</li>
+</ul>
+</li>
+<li>
+<p>保护模式下：</p>
+<p><strong>对于存储器操作数</strong></p>
+<p>LA（线性地址）=SR（段寄存器）+A（给定地址段的位移量）+X（根据不同情况分别设置）</p>
+<p>涉及==分段虚拟管理方式==，后续会详细讨论…</p>
+<p><strong>相对寻址</strong></p>
+<p>LA=(PC)+A，跳转目标指令地址</p>
+</li>
+</ul>
+<h3 id="高级语言中寻址举例">高级语言中寻址举例</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> x;<br><span class="hljs-type">float</span> a[<span class="hljs-number">100</span>];<br><span class="hljs-type">short</span> b[<span class="hljs-number">4</span>][<span class="hljs-number">4</span>];<br><span class="hljs-type">char</span> c;<br><span class="hljs-type">double</span> d[<span class="hljs-number">10</span>];<br><span class="hljs-comment">//linux下double按4B对齐，windows下double按8B对齐</span><br><span class="hljs-comment">//windows下d[0]的地址必须是8的倍数</span><br></code></pre></td></tr></table></figure>
+<img src="https://gitee.com/collision-kkk/photo-storage/raw/master/img/image-20240521165939354.png" srcset="/img/loading.gif" lazyload alt="image-20240521165939354" style="zoom:80%;" />
+<blockquote>
+<p>各变量的寻址方式?</p>
+<p><code>x</code> <code>c</code>：位移/基址</p>
+<p><code>a[i]</code>：104+i×4，比例变址+位移</p>
+<p><code>d[i]</code>：544+i×8，比例变址+位移</p>
+<p><code>b[i][j]</code>：504+i×8+j×2，基址+比例变址+位移</p>
+</blockquote>
+<p>将<code>b[i][j]</code>取到<code>AX</code>中的指令可以是：<code>movw 504(%ebp,%esi,2),%ax</code>，其中i×8在EBP中，j在ESI中，2是比例因子</p>
+<h3 id="IA-32机器指令格式">IA-32机器指令格式</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令段</th>
+<th style="text-align:center">操作码</th>
+<th></th>
+<th style="text-align:center">寻址方式</th>
+<th></th>
+<th></th>
+<th style="text-align:center">SIB</th>
+<th></th>
+<th style="text-align:center">位移</th>
+<th style="text-align:center">直接数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">字节数</td>
+<td style="text-align:center">1或2</td>
+<td></td>
+<td style="text-align:center">0或1</td>
+<td></td>
+<td></td>
+<td style="text-align:center">0或1</td>
+<td></td>
+<td style="text-align:center">1、2、4</td>
+<td style="text-align:center">立即数</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td>Mod(2)</td>
+<td style="text-align:center">Reg/OP(3)</td>
+<td>R/M(3)</td>
+<td>SS(2)</td>
+<td style="text-align:center">Index(3)</td>
+<td>Base(3)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>3位移量和立即数都可以是1B、2B、4B</li>
+<li>SIB中基址B和变址I都可以是8个GRS中任一个；SS给出比例因子</li>
+<li>操作码：opcode;W与机器模式（16、32位）一起确定寄存器位数（AL、AX、EAX）；D:操作方向（确定源和目标）</li>
+<li>寻址方式：mod、r/m、reg/op三个字段与w字段和机器模式（16/32）一起确定操作数所在的寄存器编号或有效地址计算方式</li>
+</ul>
+<blockquote>
+<p><code>8d 04 02 leal (%edx,%eax,1),%eax</code></p>
+<p>1000 1101      00 000 100      00 000 010</p>
+<p>操作码               寻址方式            SIB</p>
+</blockquote>
+<h3 id="总结">总结</h3>
+<p>IA-32是典型的CISC（复杂指令集计算机）风格ISA</p>
+<ul>
+<li>
+<p>8个GPRs（8位、16位、32位）</p>
+</li>
+<li>
+<p>2个专用寄存器：EIP(PC)、EFLAGS</p>
+</li>
+<li>
+<p>6个段寄存器（间接给出段基址）</p>
+</li>
+<li>
+<p>存储空间4GB，按字节编址，小段方式</p>
+</li>
+<li>
+<p>寻址方式：立即、寄存器、存储器、相对寻址</p>
+<p>变长指令字、变长操作码</p>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="print-no-link">#计算机组成原理</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>计算机系统基础(一)笔记——Week5 IA-32指令系统</div>
+      <div>http://kcollision.github.io/2024/05db4e8ad9.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>collision</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2024年5月25日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/046b12b8b8.html" title="计算机系统基础(一)笔记——Week4 乘除运算及浮点数运算">
+                        <span class="hidden-mobile">计算机系统基础(一)笔记——Week4 乘除运算及浮点数运算</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"4b3dd9ab346883aaefe8","clientSecret":"941a06b02b9557684d3bfdf9535fb2fa596229e0","repo":"HexoComments","owner":"Kcollision","admin":["Kcollision"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: '8bdbe07c094ab99ef269d651158ba192'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
