@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://kcollision.github.io/2024/0654233905.html</loc>
+    
+    <lastmod>2024-06-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://kcollision.github.io/2024/05f3758fe4.html</loc>
     
     <lastmod>2024-05-25</lastmod>
@@ -76,7 +85,7 @@
 
   <url>
     <loc>http://kcollision.github.io/</loc>
-    <lastmod>2024-06-06</lastmod>
+    <lastmod>2024-06-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -84,14 +93,21 @@
   
   <url>
     <loc>http://kcollision.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</loc>
-    <lastmod>2024-06-06</lastmod>
+    <lastmod>2024-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://kcollision.github.io/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/</loc>
-    <lastmod>2024-06-06</lastmod>
+    <lastmod>2024-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://kcollision.github.io/tags/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1/</loc>
+    <lastmod>2024-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
