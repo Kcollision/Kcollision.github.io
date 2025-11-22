@@ -1,2 +1,2 @@
 User-Agent: *
-Sitemap: https://kcollision.github.io/sitemap.xml
+Sitemap: /sitemap.xml
