@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<meta name="generator" content="Hugo 0.152.2">
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://example.com/images/favicon.png" />
+<title>Home | ᕕ ( ᐛ ) ᕗ collision&#39;s blog</title>
+<meta name="title" content="Home" />
+<meta name="description" content="Hugo &#43; Bear = :heart:" />
+<meta name="keywords" content="形式语言与自动机,离散数学,近世代数," />
+
+
+<meta property="og:url" content="https://example.com/">
+  <meta property="og:site_name" content="ᕕ ( ᐛ ) ᕗ collision&#39;s blog">
+  <meta property="og:title" content="Home">
+  <meta property="og:description" content="Hi everyone, This is Kou Lixin’s blog, he was born in SiChuan in 2004.09.02, and now is a senior student of NUAA. he mainly share some technical (maybe) articles/life moments/… on this website, and he will be happy if you find something useful here :D
+&gt;Education2021-2026 Nanjing University of Aeronautics and Astronautics (NUAA), B.S. in Software Engineering.2026-2029(incoming) Institute of Information Engineering, Chinese Academy of Sciences (IIE CAS), M.S. in Computer Application Technology.&gt;Awards2024-2025 National Scholarships 🇨🇳. (so lucky :)">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+    <meta property="og:image" content="https://example.com/images/share.png">
+
+
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://example.com/images/share.png">
+  <meta name="twitter:title" content="Home">
+  <meta name="twitter:description" content="Hi everyone, This is Kou Lixin’s blog, he was born in SiChuan in 2004.09.02, and now is a senior student of NUAA. he mainly share some technical (maybe) articles/life moments/… on this website, and he will be happy if you find something useful here :D
+&gt;Education2021-2026 Nanjing University of Aeronautics and Astronautics (NUAA), B.S. in Software Engineering.2026-2029(incoming) Institute of Information Engineering, Chinese Academy of Sciences (IIE CAS), M.S. in Computer Application Technology.&gt;Awards2024-2025 National Scholarships 🇨🇳. (so lucky :)">
+
+
+
+
+  <meta itemprop="name" content="Home">
+  <meta itemprop="description" content="Hi everyone, This is Kou Lixin’s blog, he was born in SiChuan in 2004.09.02, and now is a senior student of NUAA. he mainly share some technical (maybe) articles/life moments/… on this website, and he will be happy if you find something useful here :D
+&gt;Education2021-2026 Nanjing University of Aeronautics and Astronautics (NUAA), B.S. in Software Engineering.2026-2029(incoming) Institute of Information Engineering, Chinese Academy of Sciences (IIE CAS), M.S. in Computer Application Technology.&gt;Awards2024-2025 National Scholarships 🇨🇳. (so lucky :)">
+  <meta itemprop="datePublished" content="2024-06-17T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2024-06-17T00:00:00+00:00">
+  <meta itemprop="wordCount" content="84">
+  <meta itemprop="image" content="https://example.com/images/share.png">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <link rel="alternate" type="application/rss+xml" href="https://example.com/index.xml" title="ᕕ ( ᐛ ) ᕗ collision's blog" />
+  <style>
+  :root {
+    --width: 720px;
+    --font-main: "LXGW WenKai", "霞鹜文楷", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    --font-secondary: "LXGW WenKai", "霞鹜文楷", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    --font-scale: 1.125em;
+    --background-color: #fff;
+    --heading-color: #222;
+    --text-color: #444;
+    --link-color: #3273dc;
+    --visited-color: #8b6fcb;
+    --blockquote-color: #222;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background-color: #01242e;
+      --heading-color: #eee;
+      --text-color: #ddd;
+      --link-color: #8cc2dd;
+      --visited-color: #8b6fcb;
+      --blockquote-color: #ccc;
+    }
+  }
+
+  body {
+    font-family: var(--font-secondary);
+    font-size: var(--font-scale);
+    margin: auto;
+    padding: 20px;
+    max-width: var(--width);
+    text-align: left;
+    background-color: var(--background-color);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-main);
+    color: var(--heading-color);
+  }
+
+  a {
+    color: var(--link-color);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  nav a {
+    margin-right: 8px;
+  }
+
+  strong,
+  b {
+    color: var(--heading-color);
+  }
+
+  button {
+    margin: 0;
+    cursor: pointer;
+  }
+
+  time {
+    font-family: monospace;
+    font-style: normal;
+    font-size: 15px;
+  }
+
+  main {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    font-family: monospace;
+    padding: 2px;
+    border-radius: 3px;
+  }
+
+  footer {
+    padding: 25px 0;
+    text-align: center;
+  }
+
+  .title:hover {
+    text-decoration: none;
+  }
+
+  .title h1 {
+    font-size: 1.5em;
+  }
+
+  .inline {
+    width: auto !important;
+  }
+
+  .highlight,
+  .code {
+    border-radius: 3px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    overflow-x: auto;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: var(--visited-color);
+  }
+
+   
+  blockquote {
+    border-left: 3px solid #999;
+    color: var(--blockquote-color);
+    padding-left: 0;
+    margin-left: 0;
+    font-style: italic;
+  }
+  .quote-green  { 
+    border-left-color: #38a169;
+    background: #f0fff4;
+    color: #22543d;
+    margin: 18px 0;
+    padding: 5px;
+  }
+  .quote-blue   { 
+    border-left-color: #3182ce;
+    background: #ebf8ff;
+    color: #1a365d;
+    margin: 18px 0;
+    padding: 5px;
+  }
+  .quote-yellow { 
+    border-left-color: #d69e2e;
+    background: #fffbeb;
+    color: #744210;
+    margin: 18px 0;
+    padding: 5px;
+  }
+   
+  .photo-grid,
+  #photos-grid {
+    column-count: 3;            
+    column-gap: 16px;
+  }
+
+  @media (max-width: 900px) {
+    .photo-grid,
+    #photos-grid {
+      column-count: 2;
+    }
+  }
+  @media (max-width: 560px) {
+    .photo-grid,
+    #photos-grid {
+      column-count: 1;
+    }
+  }
+
+  #photos-grid a {
+    display: inline-block;      
+    width: 100%;
+    margin: 0 0 16px;
+    break-inside: avoid;        
+    border-radius: 10px;
+    background: #f7f7f7;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .photo-thumb {
+    width: 100%;
+    aspect-ratio: auto;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .photo-thumb img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;       
+    display: block;
+  }
+
+  #photos-grid span {
+    padding: 8px 10px 12px;
+    text-align: center;
+    font-size: 0.9em;
+    color: var(--text-color);
+  }
+
+   
+  .now-summary {
+    margin: 22px 0;
+    padding: 18px 20px;
+    border-radius: 12px;
+    border: 1px solid #f2e6f2;
+    background: #fdf8ff;
+  }
+
+  .now-summary p {
+    margin: 0;
+  }
+
+  .now-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+
+  .now-card {
+    border: 1px solid #f0dff0;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 6px 16px rgba(201, 162, 201, 0.25);
+  }
+
+  .now-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 16px;
+    background: #caa2c9;
+    border-radius: 10px 10px 0 0;
+    font-size: 0.95em;
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .now-card__cue {
+    font-weight: 700;
+    margin-right: 6px;
+  }
+
+  .now-card__title {
+    flex: 1;
+  }
+
+  .now-card__dots {
+    display: inline-flex;
+    gap: 4px;
+  }
+
+  .now-card__dots span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+  }
+
+  .now-card__body {
+    padding: 20px 24px 24px;
+  }
+
+  .now-card__body p {
+    margin: 0;
+  }
+
+  .now-card__body ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  .now-card__body li + li {
+    margin-top: 6px;
+  }
+
+  .now-note {
+    font-size: 0.9em;
+    color: #7c6d7c;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .now-summary {
+      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .now-card {
+      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(1, 36, 46, 0.7);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+    }
+
+    .now-card__header {
+      background: rgb(139, 202, 147);
+    }
+
+    .now-note {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont/style.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.css">
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      displayMath: [ ['$$', '$$'], ['\\[', '\\]'] ],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: { '[-]': ['script','noscript','style','textarea','pre','code'] }
+    }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script></head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>ᕕ ( ᐛ ) ᕗ collision&#39;s blog</h2>
+</a>
+<nav>
+<a href="/">Home</a>
+
+<a href="/photos/">Photos</a>
+
+<a href="/now/">Now</a>
+
+<a href="/blog/">Blog</a>
+
+</nav>
+</header>
+  <main>
+<!-- <blockquote class="quote-blue">
+广阔天地，大有作为。
+<p style="text-align:right;margin:0;">——教员</p>
+</blockquote> -->
+<p>Hi everyone, This is Kou Lixin&rsquo;s blog, he was born in <a href="https://zh.wikipedia.org/wiki/%E5%9B%9B%E5%B7%9D%E7%9C%81">SiChuan</a> in 2004.09.02, and now is a senior student of <a href="https://nuaa.edu.cn/">NUAA</a>. he mainly share some technical (maybe) articles/life moments/&hellip; on this website, and he will be happy if you find something useful here :D</p>
+<section class="now-stack">
+	<article class="now-card">
+		<header class="now-card__header">
+			<span class="now-card__cue">&gt;</span>
+			<span class="now-card__title">Education</span>
+			<span class="now-card__dots" aria-hidden="true">
+				<span></span><span></span><span></span>
+			</span>
+		</header>
+		<div class="now-card__body">
+			<li><b>2021-2026</b>  Nanjing University of Aeronautics and Astronautics (NUAA), B.S. in Software Engineering.</li>
+            <li><b>2026-2029</b>(incoming)  Institute of Information Engineering, Chinese Academy of Sciences (IIE CAS), M.S. in Computer Application Technology.</li>
+		</div>
+	</article>
+	<article class="now-card">
+		<header class="now-card__header">
+			<span class="now-card__cue">&gt;</span>
+			<span class="now-card__title">Awards</span>
+			<span class="now-card__dots" aria-hidden="true">
+				<span></span><span></span><span></span>
+			</span>
+		</header>
+		<div class="now-card__body">
+			<li><b>2024-2025</b>  National Scholarships 🇨🇳. (so lucky :)
+		</div>
+	</article>
+</section>
+
+
+  </main>
+  <footer>Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>
+</footer>
+
+  
+<script type="module">
+  const gallery = document.querySelector('#photos-grid');
+  if (gallery) {
+    const promises = [...gallery.querySelectorAll('a[data-auto-size] img')].map(img => {
+      if (img.complete) return Promise.resolve(img);
+      return new Promise(resolve => img.addEventListener('load', () => resolve(img)));
+    });
+
+    Promise.all(promises).then(() => {
+      gallery.querySelectorAll('a[data-auto-size]').forEach(link => {
+        const img = link.querySelector('img');
+        link.dataset.pswpWidth = img.naturalWidth;
+        link.dataset.pswpHeight = img.naturalHeight;
+      });
+
+      import('https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe-lightbox.esm.min.js')
+        .then(({ default: PhotoSwipeLightbox }) => {
+          new PhotoSwipeLightbox({
+            gallery,
+            children: 'a',
+            pswpModule: () => import('https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.esm.min.js')
+          }).init();
+        });
+    });
+  }
+</script>
+</body>
+
+</html>

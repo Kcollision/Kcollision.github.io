@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://example.com/images/favicon.png" />
+<title>离散数学笔记-近世代数 | ᕕ ( ᐛ ) ᕗ collision&#39;s blog</title>
+<meta name="title" content="离散数学笔记-近世代数" />
+<meta name="description" content="本文是学习NUAA《离散数学I》课程时对近世代数部分的知识点总结." />
+<meta name="keywords" content="离散数学,近世代数," />
+
+
+<meta property="og:url" content="https://example.com/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0-%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0/">
+  <meta property="og:site_name" content="ᕕ ( ᐛ ) ᕗ collision&#39;s blog">
+  <meta property="og:title" content="离散数学笔记-近世代数">
+  <meta property="og:description" content="本文是学习NUAA《离散数学I》课程时对近世代数部分的知识点总结.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2023-09-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-09-19T00:00:00+00:00">
+    <meta property="article:tag" content="离散数学">
+    <meta property="article:tag" content="近世代数">
+    <meta property="og:image" content="https://example.com/images/share.png">
+
+
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://example.com/images/share.png">
+  <meta name="twitter:title" content="离散数学笔记-近世代数">
+  <meta name="twitter:description" content="本文是学习NUAA《离散数学I》课程时对近世代数部分的知识点总结.">
+
+
+
+
+  <meta itemprop="name" content="离散数学笔记-近世代数">
+  <meta itemprop="description" content="本文是学习NUAA《离散数学I》课程时对近世代数部分的知识点总结.">
+  <meta itemprop="datePublished" content="2023-09-19T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2023-09-19T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1036">
+  <meta itemprop="image" content="https://example.com/images/share.png">
+  <meta itemprop="keywords" content="离散数学,近世代数">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  :root {
+    --width: 720px;
+    --font-main: "LXGW WenKai", "霞鹜文楷", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    --font-secondary: "LXGW WenKai", "霞鹜文楷", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    --font-scale: 1.125em;
+    --background-color: #fff;
+    --heading-color: #222;
+    --text-color: #444;
+    --link-color: #3273dc;
+    --visited-color: #8b6fcb;
+    --blockquote-color: #222;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background-color: #01242e;
+      --heading-color: #eee;
+      --text-color: #ddd;
+      --link-color: #8cc2dd;
+      --visited-color: #8b6fcb;
+      --blockquote-color: #ccc;
+    }
+  }
+
+  body {
+    font-family: var(--font-secondary);
+    font-size: var(--font-scale);
+    margin: auto;
+    padding: 20px;
+    max-width: var(--width);
+    text-align: left;
+    background-color: var(--background-color);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-main);
+    color: var(--heading-color);
+  }
+
+  a {
+    color: var(--link-color);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  nav a {
+    margin-right: 8px;
+  }
+
+  strong,
+  b {
+    color: var(--heading-color);
+  }
+
+  button {
+    margin: 0;
+    cursor: pointer;
+  }
+
+  time {
+    font-family: monospace;
+    font-style: normal;
+    font-size: 15px;
+  }
+
+  main {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    font-family: monospace;
+    padding: 2px;
+    border-radius: 3px;
+  }
+
+  footer {
+    padding: 25px 0;
+    text-align: center;
+  }
+
+  .title:hover {
+    text-decoration: none;
+  }
+
+  .title h1 {
+    font-size: 1.5em;
+  }
+
+  .inline {
+    width: auto !important;
+  }
+
+  .highlight,
+  .code {
+    border-radius: 3px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    overflow-x: auto;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: var(--visited-color);
+  }
+
+   
+  blockquote {
+    border-left: 3px solid #999;
+    color: var(--blockquote-color);
+    padding-left: 0;
+    margin-left: 0;
+    font-style: italic;
+  }
+  .quote-green  { 
+    border-left-color: #38a169;
+    background: #f0fff4;
+    color: #22543d;
+    margin: 18px 0;
+    padding: 5px;
+  }
+  .quote-blue   { 
+    border-left-color: #3182ce;
+    background: #ebf8ff;
+    color: #1a365d;
+    margin: 18px 0;
+    padding: 5px;
+  }
+  .quote-yellow { 
+    border-left-color: #d69e2e;
+    background: #fffbeb;
+    color: #744210;
+    margin: 18px 0;
+    padding: 5px;
+  }
+   
+  .photo-grid,
+  #photos-grid {
+    column-count: 3;            
+    column-gap: 16px;
+  }
+
+  @media (max-width: 900px) {
+    .photo-grid,
+    #photos-grid {
+      column-count: 2;
+    }
+  }
+  @media (max-width: 560px) {
+    .photo-grid,
+    #photos-grid {
+      column-count: 1;
+    }
+  }
+
+  #photos-grid a {
+    display: inline-block;      
+    width: 100%;
+    margin: 0 0 16px;
+    break-inside: avoid;        
+    border-radius: 10px;
+    background: #f7f7f7;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .photo-thumb {
+    width: 100%;
+    aspect-ratio: auto;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .photo-thumb img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;       
+    display: block;
+  }
+
+  #photos-grid span {
+    padding: 8px 10px 12px;
+    text-align: center;
+    font-size: 0.9em;
+    color: var(--text-color);
+  }
+
+   
+  .now-summary {
+    margin: 22px 0;
+    padding: 18px 20px;
+    border-radius: 12px;
+    border: 1px solid #f2e6f2;
+    background: #fdf8ff;
+  }
+
+  .now-summary p {
+    margin: 0;
+  }
+
+  .now-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+
+  .now-card {
+    border: 1px solid #f0dff0;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 6px 16px rgba(201, 162, 201, 0.25);
+  }
+
+  .now-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 16px;
+    background: #caa2c9;
+    border-radius: 10px 10px 0 0;
+    font-size: 0.95em;
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .now-card__cue {
+    font-weight: 700;
+    margin-right: 6px;
+  }
+
+  .now-card__title {
+    flex: 1;
+  }
+
+  .now-card__dots {
+    display: inline-flex;
+    gap: 4px;
+  }
+
+  .now-card__dots span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+  }
+
+  .now-card__body {
+    padding: 20px 24px 24px;
+  }
+
+  .now-card__body p {
+    margin: 0;
+  }
+
+  .now-card__body ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  .now-card__body li + li {
+    margin-top: 6px;
+  }
+
+  .now-note {
+    font-size: 0.9em;
+    color: #7c6d7c;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .now-summary {
+      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .now-card {
+      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(1, 36, 46, 0.7);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+    }
+
+    .now-card__header {
+      background: rgb(139, 202, 147);
+    }
+
+    .now-note {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont/style.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.css">
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      displayMath: [ ['$$', '$$'], ['\\[', '\\]'] ],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: { '[-]': ['script','noscript','style','textarea','pre','code'] }
+    }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script></head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>ᕕ ( ᐛ ) ᕗ collision&#39;s blog</h2>
+</a>
+<nav>
+<a href="/">Home</a>
+
+<a href="/photos/">Photos</a>
+
+<a href="/now/">Now</a>
+
+<a href="/blog/">Blog</a>
+
+</nav>
+</header>
+  <main>
+
+<h1>离散数学笔记-近世代数</h1>
+<p>
+  <i>
+    <time datetime='2023-09-19'>
+      19 Sep, 2023
+    </time>
+  </i>
+</p>
+
+<content>
+  <h2 id="61-群">6.1 群</h2>
+<h3 id="611-半群和独异点">6.1.1 半群和独异点</h3>
+<h4 id="定义">定义</h4>
+<ul>
+<li>对于代数系统$V=&lt;S,\cdot&gt;$，若$\cdot$<strong>可结合</strong>，则$V$为半群。<br>
+进一步，若半群$V$具有<strong>单位元</strong>，则称$V$为独异点。</li>
+<li>典型的半群有$&lt;Z^{+},+&gt;,&lt;N,+&gt;,&lt;Z,+&gt;,&lt;Q,+&gt;,&lt;R,+&gt;$等。</li>
+</ul>
+<h3 id="612-群">6.1.2 群</h3>
+<h4 id="定义-1">定义</h4>
+<ul>
+<li>对于代数系统$&lt;G,\cdot&gt;$，若$\cdot$<strong>可结合</strong>，存在<strong>单位元$e\in G$</strong>，且对于$G$中的任意元素$x$都有$x^{-1}\in G$，则称$G$为群。
+<ul>
+<li>典型的群有$&lt;Z,+&gt;,&lt;Q,+&gt;,&lt;R,+&gt;,&lt;Z_{n},\oplus&gt;$</li>
+</ul>
+</li>
+<li><em>有限群</em>：群$G$为有穷集，如$&lt;Z_6,\oplus&gt;$，其中$|G|$称为<strong>群的阶</strong><br>
+<em>无限群</em>：群$G$为无穷集，如$&lt;Z,+&gt;,&lt;Q,+&gt;,&lt;R,+&gt;$是无限群<br>
+<em>平凡群</em>：<strong>只含单位元</strong>的群，如$&lt;\lbrace0\rbrace,+&gt;,&lt;\lbrace1\rbrace,\times&gt;$<br>
+<em>交换群/Abel群</em>：群中的二元运算<strong>可交换</strong></li>
+</ul>
+<h4 id="一些性质">一些性质</h4>
+<ul>
+<li>$\forall x\in G,x^{n}$定义如下：
+<ul>
+<li>$x^{0}=e$</li>
+<li>$x^{n+1}=x^{n}x,n\in N$</li>
+<li>$x^{-n}=(x^{-1})^{n}$</li>
+</ul>
+</li>
+<li>$G$中幂运算满足：
+<ul>
+<li>$\forall a \in G,(a^{-1})^{-1}=a$</li>
+<li>$\forall a,b \in G,(ab)^{-1}=b^{-1}a^{-1}$</li>
+<li>$\forall a \in G,a^{n}a^{m}=a^{n+m}$</li>
+<li>$\forall a \in G,(a^{n})^{m}=a^{nm}$</li>
+</ul>
+</li>
+<li>$\forall a,b \in G$，方程$ax=b$和$ya=b$在$G$中有解，且唯一<br>
+$prove:$
+<ul>
+<li>存在性：$a(a^{-1}b)=(aa^{-1})b=eb=b$</li>
+<li>唯一性：若$c$是方程的解，则$c=(aa^{-1})c=a^{-1}(ac)=a^{-1}b$</li>
+</ul>
+</li>
+<li>$G$为群，则$G$满足消去律，即$\forall a,b,c\in G$,有<br>
+$$ab=ac \Rightarrow b=c \
+ba=ca \Rightarrow b=c$$</li>
+</ul>
+<h4 id="特殊的群">特殊的群</h4>
+<ul>
+<li>$Klein$四元群
+$$
+\def\arraystretch{1.25}
+\begin{array}{c|c c}
+\cdot &amp; e &amp; a &amp; b &amp; c \cr\hline
+e &amp; e &amp; a &amp; b &amp; c\cr
+a &amp; a &amp; e &amp; c &amp; b\cr
+b &amp; b &amp; c &amp; e &amp; a\cr
+c &amp; c &amp; b &amp; a &amp; e
+\end{array}
+$$
+<ul>
+<li>单位元$e$</li>
+<li>每一个元素的逆元都是自身</li>
+<li>$a,b,c$中任意2个元素运算$\cdot$结果是另外一个</li>
+<li>群中元素的阶：$|e|=1,|a|=|b|=|c|=2$</li>
+</ul>
+</li>
+</ul>
+<h3 id="613-群中元素的阶">6.1.3 群中元素的阶</h3>
+<h4 id="定义-2">定义</h4>
+<ul>
+<li>$x\in G$，使得$x^{k}=e$成立的<strong>最小正整数</strong>$k$称为$x$的阶，记作$|x|=k$，此时$x$称为$k$阶元。若不存在这样的$k$，则$x$称为<strong>无限阶元</strong>
+<ul>
+<li>$&lt;Z,+&gt;$中，$|0|=1$</li>
+<li>$&lt;Z_{6},\oplus&gt;$中，$|0|=1,|1|=|5|=6,|2|=|4|=3,|3|=2$</li>
+<li>$&lt;Z_{8},\oplus&gt;$中，阶为4的元素有2、6，$|4|=2$</li>
+</ul>
+</li>
+</ul>
+<blockquote class="quote-yellow">
+q：如果$G$是有限群，那么$G$包括无限阶元吗？
+a：若$G$为有限群，$\forall a\in G$为无限阶元，则  
+$$
+\lbrace a^{-\infty}...a^{-1},a^{0},a^{1},a^{2}...a^{\infty}\rbrace \subset G
+$$
+且$a^{-\infty}\not = ... \not = a^{-1} \not = a^{0} \not = a^{1} \not = a^{2} \not = ...\not = a^{\infty}$  
+(若$\exists n,m\in Z$，且$n\not = m$，有$a^{n}=a^{m}\Rightarrow a^{|n-m|}=e$，与已知矛盾)  
+即，无限阶元会产生无穷个元素，显然$G$不可能是有限群
+</blockquote> 
+<h4 id="一些性质-1">一些性质</h4>
+<ul>
+<li>设$G$为群，$a\in G$，且$|a|=r$，则
+<ul>
+<li>$a^{k}=e$的充分必要条件为 $r|k$<br>
+必要性：已知$a^{k}=e$，由除法得$k=pr+q(0\le q \le r-1,p\in Z)$，从而
+$$
+a^q=ea^{q}=(a^r)^{p}a^{q}=a^{k}=e
+$$
+因此$q=0$</li>
+<li>$|a|=|a^{-1}|$<br>
+$|a^{-1}|=t$，则$(a^{-1})^{r}=(a^r)^{-1}=e$，则$t|r$<br>
+同理可证$r|t$，因此$t=r$</li>
+<li>$r\le|G|$<br>
+已知$|a|=r$，则
+$$
+\begin{aligned}
+a^{0} \not = a^{1} \not = a^{2}\not = &hellip;\not = a^{r-1} \\
+a^{r}=a^{0},a^{r+1}=a^{1},&hellip;,a^{2r-1}=a^{r-1} \\
+a^{-1}=a^{r-1},a^{-2}=a^{r-2},&hellip;,a^{-r}=a^{0}
+\end{aligned}
+$$
+且$\lbrace a^{0},&hellip;,a^{r-1}\rbrace\subset G$,即$r\le|G|$</li>
+</ul>
+</li>
+</ul>
+<h3 id="614-子群">6.1.4 子群</h3>
+<h4 id="定义-3">定义</h4>
+<ul>
+<li>设$&lt;G,\cdot&gt;$是群，$H$是$G$的<strong>非空子集</strong>，如果$H$关于$G$中运算$\cdot$构成群，则称$H$是$G$的子群，记作$H\le G$<br>
+若$H$是$G$的子群，且$H\subset G$，则称$H$是$G$的<strong>真子群</strong>，记作$H&lt;G$<br>
+$G$和$\lbrace e\rbrace$都是$G$的子群，称为$G$的平凡子群</li>
+<li>eg：$nZ(n\in N)\le &lt;Z,+&gt;$，且当$n\not =1$时，$nZ&lt;Z$</li>
+</ul>
+<h4 id="子群的判定定理">子群的判定定理</h4>
+<p>下面给出判断子群的三条定理：</p>
+<ul>
+<li>定理一：设$&lt;G,\cdot&gt;$是群，$H$是$G$的非空子集，$H\le G$当且仅当：
+<ul>
+<li>$(1)\forall a,b \in H$，有$a\cdot b\in H$</li>
+<li>$(2)\forall a \in H$，有$a^{-1}\in H$</li>
+</ul>
+</li>
+<li>定理二(<strong>子群判定定理</strong>)：设$G$为群，$H$是$G$的非空子集，$H\le G$当且仅当 $\forall a,b\in H$有$a\cdot b^{-1}\in H$</li>
+</ul>
+<blockquote class="quote-blue">
+充分性：<br>
+已知$H\le G$，则$\forall a,b \in H$，有$a\cdot b\in H 且b^{-1} \in H \Rightarrow a\cdot b^{-1}\in H$<br>
+必要性：<br>
+由$\forall a,b\in H有a\cdot b^{-1}\in H$<br>
+$1.$令$b=a$，则$a\cdot a^{-1}=e\in H$，即$H$中单位元存在<br>
+$2.$令$a=e$，则$e\cdot b^{-1}=b^{-1}\in H$，即$H$中元素均有逆元<br>
+$3.\forall a,b \in H$，则$b^{-1}\in H$，则$a\cdot (b^{-1})^{-1} \in H \Rightarrow a\cdot b \in H$，即$H$对$\cdot$运算封闭
+</blockquote>
+<ul>
+<li>定理三(<strong>有限群的子群判定定理</strong>)：设$G$为群，$H$是$G$的非空子集。如果$H$是有穷集，则$H$是$G$的子群当且仅当$\forall a,b \in H$，有$a\cdot b\in H$</li>
+</ul>
+<blockquote class="quote-blue">
+充分性易证，下证必要性<br>
+$1.$由于$\forall a,b \in H$，有$a\cdot b\in H$，即$H$对$\cdot$运算封闭<br>
+$2.$由于$H$是有穷集，故$\forall a\in H$，有$|a|=r\Rightarrow a^{r}=e\in H$，即$H$中存在单位元<br>
+$3.$由$a^{r-1}\cdot a=e \Rightarrow a^{-1}=a^{r-1}$，即$H$中任意元素均有逆元
+</blockquote>
+<h4 id="特殊子群">特殊子群</h4>
+<ul>
+<li><em>循环群</em>：设$G$为群，$a\in G$，令$H=\lbrace a^{k}|k\in Z\rbrace$，则$H$是$G$的子群，称为由$a$<strong>生成的子群</strong>，记作$&lt;a&gt;$，称为循环群
+<ul>
+<li>整数加群$&lt;Z,+&gt;$，由$2$生成的子群是$&lt;2&gt;=\lbrace 2k|k\in Z \rbrace=2Z$</li>
+<li>模6加群$&lt;Z_{6},\oplus&gt;$中，$&lt;2&gt;=\lbrace 0,2,4 \rbrace$</li>
+</ul>
+</li>
+<li>设$G$为群，令$C$为$G$中所有可交换的元素构成的集合，即$C=\lbrace a|a\in G \land \forall x \in G(ax=xa)\rbrace$，则$C$是$G$的子群，$C$称为$G$的<strong>中心</strong>
+<ul>
+<li>对于$Abel$群$G$，$G$的中心就是其自身</li>
+<li>如果中心是$\lbrace e \rbrace$，则$G$是无中心的</li>
+</ul>
+</li>
+</ul>
+<blockquote class="quote-blue">
+  $1.$设$a,b\in C$，则$a\in G,b\in G \Rightarrow b^{-1} \in G$，且对$\forall x \in G$，有$ax=xa$
+$$
+bx=xb\Rightarrow x=b^{-1}xb \Rightarrow xb^{-1}=b^{-1}x
+$$
+因此$b^{-1}\in C$，故$ab^{-1}x=axb^{-1}=xab^{-1}$
+</blockquote>
+<p><em>共轭子群</em>：<br>
+设$H\le G,x\in G$，证明：$xHx^{-1}=\lbrace xhx^{-1}|h\in H\rbrace$是$G$的子群，称为$H$的共轭子群</p>
+<blockquote class="quote-blue">
+  $1.$设$xax^{-1},xbx^{-1}\in xHx^{-1}$，则$a\in H,b\in H,b^{-1}\in H\Rightarrow ab^{-1}\in H$
+  $2.$$xax^{-1}(xbx^{-1})^{-1}=xax^{-1}xb^{-1}x^{-1}=xab^{-1}x^{-1}\in xHx^{-1}$，由子群判定定理，原式得证
+</blockquote>
+<ul>
+<li>例：设$G$是群，$H,K$是G的子群，证明<br>
+（1）$H\cap K$也是$G$的子群</li>
+</ul>
+<blockquote class="quote-blue">
+  $\forall a,b\in H\cap K$，则$a\in H 且 a\in K,b^{-1}\in H 且 b^{-1}\in K$，由于$H\le G且K\le G$，因此$ab^{-1}\in H且ab^{-1}\in K$，因此$ab^{-1} \in H\cap K\Rightarrow H\cap K\le G$
+</blockquote>
+<p>（2）$H\cup K\le G\iff H\subseteq K \vee K\subseteq H$</p>
+<blockquote class="quote-blue">
+  充分性$\Leftarrow$显然成立<br>  
+  下证必要性$\Rightarrow$：假设$H\not \subseteq K\wedge K\not \subseteq H$，则$\exists h\in H \wedge h \notin K,\exists k\in K \wedge k \notin H$，则$hk\notin H$（否则$k=h^{-1}(hk)\in H$，矛盾）,同理$hk\notin K$，因此$hk\notin H\cup K$.但$h,k\in H\cup K$，与$H \cup K \le G$矛盾  
+  因此$H\subseteq K\vee K\subseteq H$
+</blockquote>
+<ul>
+<li>因此，<strong>子群的并集不一定是子群</strong></li>
+</ul>
+<h3 id="615-循环群">6.1.5 循环群</h3>
+<h4 id="定义-4">定义</h4>
+<p>设$G$是群，若$\exists a \in G$使得$G=\lbrace  a^{k}|k\in Z \rbrace $，则称$G$是循环群，记作$G=\langle a \rangle$，称$a$为$G$的生成元</p>
+<ul>
+<li>eg:对于任何群$G$，由$G$中元素$a$生成的子群是循环群
+<ul>
+<li>有限循环群中所有元素都是有限阶，且互不相等</li>
+<li>无限循环群中所有元素都是无限阶，且互不相等（除单位元$e$外）</li>
+</ul>
+</li>
+</ul>
+<h4 id="分类">分类</h4>
+<p>$G=\langle a \rangle$，根据$|a|$分为两类：</p>
+<ul>
+<li>若$a$是$n$阶元，则
+$$
+G=\lbrace a^0=e,a^1,a^2,&hellip;,a^{n-1}\rbrace
+$$
+则 $|G|=|a|=n$，称$G$为$n$阶有限循环群</li>
+<li>若$a$是无限阶元，则
+$$
+G=\lbrace a^0=e,a^{\pm1},a^{\pm2},&hellip;\rbrace
+$$
+则称$G$为无限循环群</li>
+</ul>
+<blockquote class="quote-yellow">
+由$a$生成的循环群只有一个生成元吗?
+<p>$$
+&lt;Z,+&gt;=\langle 1 \rangle=\langle -1 \rangle
+$$</p>
+<p>$$
+&lt;Z_{4},\oplus_{4}&gt;=\langle 1 \rangle=\langle 3 \rangle
+$$</p>
+</blockquote>
+<h4 id="循环群的生成元求法">循环群的生成元求法</h4>
+<p>设$G=\langle a \rangle$是循环群</p>
+<ul>
+<li>
+<p>若$G$是无限循环群，则$G$只有两个生成元$a、a^{-1}$</p>
+</li>
+<li>
+<p>若$G$是$n$阶循环群，则$G$有$\phi(n)$个生成元
+（1）对于任何小于$n$且与$n$互质的正整数$r$，$a^{r}$是$G$的生成元
+（2）$\phi(n)$欧拉函数：对于任何正整数$n$，小于$n$且与$n$<strong>互质</strong>的<strong>正整数</strong>个数
+eg:$\phi(12)=4(1,5,7,11)$</p>
+<p>$$
+|a^{i}|=\frac{lcm(n,i)}{i}=\frac{n}{gcd(n,i)}
+$$</p>
+</li>
+</ul>
+<h4 id="循环群的子群求法">循环群的子群求法</h4>
+<p>设$G=\langle a \rangle$是循环群</p>
+<ul>
+<li>$G$的子群仍然是循环群</li>
+<li>无限循环群$G$的子群除了$\lbrace e\rbrace $外都是无限循环群
+$\langle a^{m}\rangle \le G,m\in Z. 取t\not = m ,\langle a^{m}\rangle \not = \langle a^{t}\rangle$</li>
+<li>$n$阶循环群$G$，对于$n$的每个<strong>正因子</strong>$d$，$G$恰好含有一个$d$<strong>阶子群</strong>$H=\langle a^{n/d}\rangle$</li>
+</ul>
+<p>例:求出下列$G$的子群<br>
+（1）$G=\langle a \rangle$为无限循环群<br>
+$\langle e\rangle=\lbrace e\rbrace $<br>
+$\langle a\rangle=\langle a^{-1}\rangle=G$
+$\langle a^{2}\rangle=\langle a^{-2}\rangle=\lbrace e,a^{\pm2},a^{\pm4},a^{\pm6},&hellip;\rbrace $<br>
+&hellip;<br>
+（2）$G$为12阶循环群$\langle a \rangle$<br>
+12的正因子有1,2,3,4,6,12.$G$有6个子群<br>
+$\langle e\rangle=\lbrace e\rbrace $<br>
+$\langle a\rangle=\lbrace G\rbrace $<br>
+$\langle a^{2}\rangle=\lbrace e,a^{2},a^{4},a^{6},a^{8},a^{10}\rbrace $<br>
+$\langle a^{3}\rangle=\lbrace e,a^{3},a^{6},a^{9}\rbrace $<br>
+$\langle a^{4}\rangle=\lbrace e,a^{4},a^{8}\rbrace $<br>
+$\langle a^{6}\rangle=\lbrace e,a^{6}\rbrace $</p>
+<h3 id="616-n元置换群">6.1.6 n元置换群</h3>
+<p>循环群都是Abel群，置换群一般不是</p>
+<h4 id="定义-5">定义</h4>
+<p>设$S=\lbrace 1,2,&hellip;,n\rbrace $，$s$上的任何双射函数$\sigma：S\rightarrow S$称为$S$上的$n$<strong>元置换</strong>，$(1)$表示恒等置换。即：
+$$
+\sigma=	\begin{pmatrix}
+1 &amp; 2 &amp; &hellip; &amp; n\
+\sigma(1) &amp; \sigma(2) &amp; &hellip; &amp; \sigma(n)
+\end{pmatrix}
+$$
+所有的$n$元置换构成的集合$S_{n}$，其关于置换的乘法<em>封闭</em>，置换的乘法满足<em>结合律</em>，恒等置换(1)是$S_{n}$中的<em>单位元</em>，对于任何$n$元置换$\sigma \in S_{n}$，逆置换$\sigma^{-1}$是$\sigma$的逆元。因此$S_{n}$关于置换的乘法构成一个群，称为<strong>n元对称群</strong>，其子群称为<strong>n元置换群</strong>。</p>
+<h4 id="乘法与逆">乘法与逆</h4>
+<p>两个$n$元置换的乘法就是函数的符合运算，$n$元置换的求逆就是求反函数
+$$
+\begin{aligned}
+\sigma=\begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 4 &amp; 5\\
+5 &amp; 3 &amp; 2 &amp; 1 &amp; 4
+\end{pmatrix},\tau=\begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 4 &amp; 5\\
+4 &amp; 3 &amp; 1 &amp; 2 &amp; 5
+\end{pmatrix}
+\\
+\sigma^{-1}=
+\begin{pmatrix}
+5 &amp; 3 &amp; 2 &amp; 1 &amp; 4\\
+1 &amp; 2 &amp; 3 &amp; 4 &amp; 5
+\end{pmatrix}=\begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 4 &amp; 5\\
+4 &amp; 3 &amp; 2 &amp; 5 &amp; 1
+\end{pmatrix}
+\\
+\sigma\tau=\begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 4 &amp; 5\\
+1 &amp; 2 &amp; 5 &amp; 3 &amp; 4
+\end{pmatrix}
+\end{aligned}
+$$</p>
+<h4 id="轮换与对换">轮换与对换</h4>
+<p>设$\sigma$是$S=\lbrace 1,2,&hellip;,n\rbrace $上的$n$元置换，若$\sigma(i_{1})=i_{2},\sigma(i_{2})=i_{3},&hellip;,\sigma(i_{k-1})=i_{k},\sigma(i_{k})=i_{1}$，且保持$S$中其他元素不变，则称$\sigma$为$S$上的$k$<strong>阶轮换</strong>，记作$(i_{1}i_{2}&hellip;i_{k})$。若$k=2$，则称$\sigma$为$S$上的<strong>对换</strong>。
+如
+$$
+\sigma=\begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 4 &amp; 5\
+5 &amp; 3 &amp; 2 &amp; 1 &amp; 4
+\end{pmatrix}=(1\space 5\space 4)(2\space 3)=(1\space 4)(1\space 5)(2\space 3)
+$$</p>
+<p>任何$n$元置换都可以<em>唯一</em>地表示成<strong>不相交的轮换之积</strong>，而任何轮换都能表示为对换之积
+$$
+(i_{1}i_{2}&hellip;i_{k})=(i_{1}i_{k})&hellip;(i_{1}i_{3})(i_{1}i_{2})
+$$</p>
+<ul>
+<li>$n$元置换的对换表达式<strong>不唯一</strong>，但表达式中所含<strong>对换个数的奇偶性不变</strong>
+<ul>
+<li>如4元置换$\tau=(1\space 2 \space 3 \space 4)$只能表示为<em>奇数个</em>对换之积</li>
+</ul>
+</li>
+<li>$n$元置换可以表示为<strong>奇数个对换之积</strong>，则称为<strong>奇置换</strong>，否则称为<strong>偶置换</strong>，奇偶置换各有$n!/2$个。</li>
+</ul>
+<h4 id="置换的阶">置换的阶</h4>
+<p>$G$是$n$元置换群</p>
+<ul>
+<li><strong>k阶轮换</strong>的阶是k</li>
+<li>置换的阶是各轮换阶的<strong>最小公倍数</strong>
+<ul>
+<li>例1：$\tau=\begin{pmatrix}1&amp;2&amp;3&amp;4&amp;5&amp;6&amp;7&amp;8\\ 5&amp;2&amp;3&amp;8&amp;7&amp;6&amp;1&amp;4\end{pmatrix}$
+易知$|\tau|=[|(1\space 5\space 7)|,|(4\space 8)|]=[3,2]=6$</li>
+<li>例2：$(1\space 2\space 4\space 3)(3\space 5\space 8)(6\space 7)$的阶是？是奇置换/偶置换？
+$|(1\space 2\space 4\space 3)(3\space 5\space 8)(6\space 7)|=|\begin{pmatrix}1&amp;2&amp;3&amp;4&amp;5&amp;6&amp;7&amp;8\\2&amp;4&amp;5&amp;3&amp;8&amp;7&amp;6&amp;1\end{pmatrix}|=|(1\space 2\space 4\space 3\space 5\space 8)(6\space 7)|=[6,2]=6$
+因此阶为6，是偶置换</li>
+</ul>
+</li>
+</ul>
+<h3 id="617-群的分解">6.1.7 群的分解</h3>
+<h4 id="拉格朗日定理">拉格朗日定理</h4>
+<p>设$G$是有限群，$H$是$G$的子群，则$|G|=[G:H]\cdot|H|$
+$[G:H]$是$H$在$G$中的指数</p>
+<ul>
+<li>推论：设$G$是$n$阶群，则$\forall a\in G$，$|a|$是$n$的因子，且有$a^{n}=e$</li>
+<li>$\langle a\rangle$是$G$的子群，阶是$n$的因子</li>
+</ul>
+<h3 id="推论和应用">推论和应用</h3>
+<ul>
+<li>素数阶群都是循环群</li>
+<li>6阶群中必含有3阶元、2阶元</li>
+<li>6阶群在同构意义下只有2个</li>
+<li>4阶群在同构意义下只有2个</li>
+</ul>
+<h2 id="62-环">6.2 环</h2>
+<h3 id="621-环">6.2.1 环</h3>
+<h4 id="定义-6">定义</h4>
+<p>环是具有两个二元运算的代数系统，分别称为<em>加法和乘法</em>，记作$+$和$\cdot$
+设$\langle R,+,\cdot\rangle$是具有两个二元运算的代数系统，如果</p>
+<ul>
+<li>$\langle R,+\rangle$构成<strong>Abel群</strong></li>
+<li>$\langle R,\cdot\rangle$构成<strong>半群</strong></li>
+<li>$\cdot$对$+$满足<strong>分配律</strong></li>
+</ul>
+<p>则称该代数系统是环。环中加法和乘法的单位元记作0和1（1可能不存在），环中元素的加法逆元称为<strong>负元</strong>，记作$-x$；$x$的乘法逆元如果存在称为<strong>逆元</strong>，记作$x^{-1}$。类似的，将$x+(-y)$记作$x-y$<br>
+（1）整数集、有理数集、实数集和复数集关于普通加法和乘法构成环，分别称为整数环$Z$、有理数环$Q$、实数环$R$和复数环$C$<br>
+（2）$n(n&gt;2)$阶实矩阵的集合$M_{n}(R)$关于矩阵加法和乘法构成<strong>n阶实矩阵环</strong><br>
+（3）幂集$P(B)$关于集合的对称差和交运算构成环$\langle P(B),\oplus,\cap\rangle$<br>
+（4）$\langle Z_{n},\oplus,\otimes\rangle$构成环，称为<strong>模n的整数环</strong><br>
+（5）设$\langle G,\circ\rangle$是Abel群，在$G$上定义 $：\forall x,y\in G,x*y=e$，则$\langle G,\circ,*\rangle$构成<strong>零环</strong></p>
+<h4 id="运算性质">运算性质</h4>
+<ul>
+<li>$0a=a0=0$</li>
+</ul>
+<p>$a0=a(0+0)=a0+a0$，由消去律得$a0=0$
+$0a=(0+0)a=0a+0a$，由消去律得$0a=0$
+故$0a=a0=0$</p>
+<ul>
+<li>$(-a)b=a(-b)=-ab$</li>
+</ul>
+<p>$(-a)b+ab=(-a+a)b=0b=0$
+$ab+(-a)b+=(-a+a)b=0b=0$
+因此$(-a)b$是$ab$的加法逆元$\Rightarrow (-a)b=-ab$
+同理，$a(-b)$是$ab$的加法逆元$\Rightarrow a(-b)=-ab$
+由逆元的唯一性，$(-a)b=a(-b)=-ab$</p>
+<ul>
+<li>$(-a)(-b)=ab$</li>
+</ul>
+<p>由$(-a)b=a(-b)$，$(-a)(-b)=(-(-a))b=ab$</p>
+<ul>
+<li>$(a-b)c=ac-bc$</li>
+</ul>
+<p>$(a-b)c=(a+(-b))c=ac+(-b)c=ac-bc$</p>
+<ul>
+<li>$c(a-b)=ca-cb$</li>
+</ul>
+<p>$c(a-b)=c(a+(-b))=ca+c(-b)=ca-cb$</p>
+<ul>
+<li>$\sum_{i=1}^{m}a_{i}\sum_{j=1}^{n}b_{j}=a_1b_1+&hellip;a_1b_n+&hellip;+a_mb_1+&hellip;+a_mb_n$</li>
+</ul>
+<p>$$
+\begin{aligned}
+\sum_{i=1}^{m}a_{i}\sum_{j=1}^{n}b_{j}&amp;=(a_1+a_2+&hellip;+a_m)(b_1+b_2+&hellip;b_n)\\
+&amp;=a_1(b_1+b_2+&hellip;b_n)+a_2(b_1+b_2+&hellip;b_n)+&hellip;+a_m(b_1+b_2+&hellip;b_n)\\
+&amp;=a_1b_1+&hellip;a_1b_n+&hellip;+a_mb_1+&hellip;+a_mb_n
+\end{aligned}
+$$</p>
+<ul>
+<li>$\forall a,b\in R,n\in Z,(na)b=a(nb)=n(ab)$</li>
+</ul>
+<p>证明略<br>
+例：在环中计算$(a+b)^3,(a-b)^2$
+$(a+b)^3=a^3+ba^2+aba+b^2a+a^2b+bab+ab^2+b^3$
+$(a-b)^2=(a-b)(a-b)=a^2-ba-ab+b^2$</p>
+<h3 id="622-环中的零因子">6.2.2 环中的零因子</h3>
+<h4 id="定义-7">定义</h4>
+<p>设$\langle R,+,\cdot\rangle$是环，若$\exists ab=0$，且$a\not =0,b\not =0$，则称$a$为<strong>左零因子</strong>，$b$为<strong>右零因子</strong>(此处的0指环中加法的单位元)，即两个非0元素的乘积为0，这样的元素称为左/右零因子
+如$\langle Z_{6},\oplus,\otimes\rangle$，其中$2\otimes 3=0$，2和3都是零因子，这个环<strong>含有零因子</strong>，不是无零因子环<br>
+无零因子的条件：$ab=0\rightarrow a=0\lor b=0$</p>
+<ul>
+<li>定理：在一个没有零因子的环里两个消去律成立。反之一个环里消去律成立，则这个环没有零因子：
+$$
+a\not =0,ab=ac\rightarrow b=c\
+a\not =0,ba=ca\rightarrow b=c
+$$</li>
+</ul>
+<blockquote class='quote-yellow'>
+证明：由于R中没有零因子，因此由$a\not =0$和
+$$
+ab=ac\rightarrow ab-ac=0\rightarrow a(b-c)=0
+$$
+得$b-c=0$，即$b=c$消去律成立
+反之，假设消去律成立，因为$ab=0\rightarrow ab=a0$
+由消去律$a\not =0$则$b=0$，因此环$R$中没有零因子
+</blockquote>
+<p>定理：一个环中若有一个消去律成立，则另一个消去律也成立</p>
+<h3 id="623-特殊的环">6.2.3 特殊的环</h3>
+<h4 id="定义-8">定义</h4>
+<p>设$\langle R,+,\cdot\rangle是环$</p>
+<ul>
+<li>若环中$\cdot$适合交换律，则$R$是<strong>交换环</strong></li>
+<li>若环中$\cdot$存在单位元，则$R$是<strong>含幺环</strong></li>
+<li>若$\forall a,b\in R,ab=0\rightarrow a=0\lor b=0$，则称$R$是<strong>无零因子环</strong></li>
+<li>若$R$<strong>交换、含幺、无零因子</strong>，则$R$是<strong>整环</strong></li>
+</ul>
+<h3 id="624-除环和域">6.2.4 除环和域</h3>
+<p>若$R$为环，$|R|&gt;1$，令$R^\lbrace *\rbrace =R-\lbrace 0\rbrace $，且$R^\lbrace *\rbrace $构成群，则称$R$是一个除环
+若$R$为<em>交换环</em>，满足以上<strong>除环的条件</strong>，则称R为<strong>域</strong>
+一个域$F$是具有两个二元运算的代数系统，其中$F$与加法构成Abel群，$F^{*}=F-{0}$与乘法也构成Abel群<br>
+（1）整数环$Z$、有理数环$Q$、实数环$R$中的乘法适合交换律、含有单位元1、不含零因子，因此是<em>交换环、含幺环、无零因子环和整环</em>。其中<strong>有理数环</strong>和<strong>实数环</strong>是<strong>域</strong>（除0外均有逆元）<br>
+（2）n阶实矩阵环$\langle M_{n}(R),+,*\rangle$不是交换环，<strong>是含幺环</strong>（单位元是$n$阶单位矩阵），不是无零因子环，因此也不是整环和域<br>
+（3）模n的整数环$\langle Z_{n},\oplus,\otimes\rangle$是交换环、含幺环，当$n$为<strong>质数</strong>时构成无零因子环、整环和域；当$n$为<strong>合数</strong>时构成不构成整环和域</p>
+<h2 id="63-格与布尔代数">6.3 格与布尔代数</h2>
+<p>格与布尔代数均是加载有两个二元运算的代数系统，<em>布尔代数也是一种格</em></p>
+<h3 id="631-格">6.3.1 格</h3>
+<h4 id="定义-9">定义</h4>
+<p>设$\langle S,\preccurlyeq \rangle$是偏序集，若$\forall x,y\in S,\lbrace x,y\rbrace $均有上确界和下确界，则称$S$关于$\preccurlyeq$构成格<br>
+其中，求上确界记作$\lor$，下确界记作$\land$</p>
+<h4 id="对偶原理">对偶原理</h4>
+<p>设$f$是含有符号$=,\preccurlyeq \succcurlyeq \lor \land$的公式，令$f^{*}$为$f$中的$\lor \rightarrow\land,\preccurlyeq\rightarrow\succcurlyeq&hellip;$后的对偶式，若$f$为真，则$f^{*}$也为真</p>
+<h4 id="一些性质-2">一些性质</h4>
+<p>$\langle L,\preccurlyeq \rangle$为格</p>
+<ul>
+<li>$\lor,\land$适合<em>交换律，结合律，幂等律，吸收律</em>
+<ul>
+<li>吸收律：$\forall a,b\in L$，有$a\lor(a\land b)=a,a\land(a\lor b)=a$</li>
+</ul>
+</li>
+</ul>
+<p>格的等价定义：</p>
+<ul>
+<li>$\langle S,*,\cdot \rangle$是代数系统，如果$*$和$\cdot$满足<em>交换律、结合律、吸收律</em>，则 $\langle S,*,\cdot \rangle$构成格</li>
+</ul>
+<blockquote class='quote-yellow'>
+证幂等律：
+$\forall a \in S,a*a=a*(a\cdot(a*a))=a$
+同理有$a\cdot a=a$
+</blockquote>
+<h4 id="子格">子格</h4>
+<p>设$L$为格，$S$是$L$的非空子集，如果$S$关于$L$中的运算封闭，则称$S$是$L$的<strong>子格</strong></p>
+<h4 id="特殊的格">特殊的格</h4>
+<p>1）分配格</p>
+<ul>
+<li>$L$是分配格当且仅当<strong>不含有</strong>与钻石格和五角格同构的<em>子格</em></li>
+<li>所有的链都是分配格</li>
+<li>元数小于5的格都是分配格</li>
+</ul>
+<p>2）有界格
+如果一个格存在全下界$a$（$\exists a\in L,\forall b\in L\rightarrow a\preccurlyeq b$）和全上界$c$（$\exists c\in L,\forall b\in L\rightarrow b\succcurlyeq c$），则为有界格，记作$\langle L,\land,\lor,0,1\rangle$</p>
+<ul>
+<li>有限格都是有界格</li>
+<li>幂集格$P(B)$都是有界格，$1=B,0=\phi$；群$G$的子群格是有界格，$1=G,0=\lbrace e\rbrace $</li>
+</ul>
+<p>3）有补格
+设$\langle L,\land,\lor,0,1\rangle$是有界格，$a\in L$，若$\exists b\in L$满足$a\land b=0,a\lor b=1$，则称$b$是$a$的补元。若每个元素都有补元则为<strong>有补格</strong></p>
+<ul>
+<li>分配格中，补元一定唯一</li>
+</ul>
+<p>设$L$是分配格，$a\in L$，假设$a$存在补元$b$和$c$，则
+$$
+a\land b=0=a\land c,a\lor b=1=a\lor c
+$$
+由分配格性质，$b=c$</p>
+<p>4）布尔格
+有补分配格称为布尔格（布尔代数）</p>
+<ul>
+<li>幂集$\langle P(B),\cap,\cup,&rsquo;,0,1\rangle$是布尔格</li>
+<li>钻石格和五角格不是布尔格</li>
+<li>长度大于2的链也不是布尔格</li>
+</ul>
+<p>等价定义：
+设$\langle B,*,\cdot\rangle$是代数系统，如果$*$和$\cdot$满足：</p>
+<ul>
+<li><em>交换律</em>，$\forall a,b\in B,a*b=b*a,a\cdot b=b\cdot a$</li>
+<li><em>分配律</em>，$\forall a,b,c\in B,a*(b\cdot c)=(a*b)\cdot(a*c),a\cdot(b* c)=(a\cdot b)*(a\cdot c)$</li>
+<li><em>同一律</em>，$\exists 0,1\in B,\forall a\in B,a*1=a,a\cdot 0=a$</li>
+<li><em>补元律</em>，$\forall a\in B,\exists a&rsquo;\in B\rightarrow a*a&rsquo;=0,a\cdot a&rsquo;=1$</li>
+</ul>
+<p>则称$\langle B,*,\cdot\rangle$是布尔代数</p>
+
+</content>
+
+
+
+<p>
+  
+  <a href="https://example.com/blog/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">#离散数学</a>
+  
+  <a href="https://example.com/blog/%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0/">#近世代数</a>
+  
+</p>
+
+  </main>
+  <footer>Made with <a href="https://github.com/janraasch/hugo-bearblog/">Hugo ʕ•ᴥ•ʔ Bear</a>
+</footer>
+
+  
+<script type="module">
+  const gallery = document.querySelector('#photos-grid');
+  if (gallery) {
+    const promises = [...gallery.querySelectorAll('a[data-auto-size] img')].map(img => {
+      if (img.complete) return Promise.resolve(img);
+      return new Promise(resolve => img.addEventListener('load', () => resolve(img)));
+    });
+
+    Promise.all(promises).then(() => {
+      gallery.querySelectorAll('a[data-auto-size]').forEach(link => {
+        const img = link.querySelector('img');
+        link.dataset.pswpWidth = img.naturalWidth;
+        link.dataset.pswpHeight = img.naturalHeight;
+      });
+
+      import('https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe-lightbox.esm.min.js')
+        .then(({ default: PhotoSwipeLightbox }) => {
+          new PhotoSwipeLightbox({
+            gallery,
+            children: 'a',
+            pswpModule: () => import('https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.esm.min.js')
+          }).init();
+        });
+    });
+  }
+</script>
+</body>
+
+</html>
