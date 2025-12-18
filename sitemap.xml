@@ -2,29 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2024-06-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/photos/</loc>
+    <loc>http://localhost:1313/photos/</loc>
   </url><url>
-    <loc>//localhost:1313/now/</loc>
+    <loc>http://localhost:1313/now/</loc>
   </url><url>
-    <loc>//localhost:1313/blog/</loc>
+    <loc>http://localhost:1313/blog/</loc>
     <lastmod>2024-06-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/blog/%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/</loc>
+    <loc>http://localhost:1313/blog/%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/</loc>
     <lastmod>2024-06-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E8%80%83%E8%AF%95%E4%BE%8B%E9%A2%98%E6%95%B4%E7%90%86/</loc>
+    <loc>http://localhost:1313/%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA%E8%80%83%E8%AF%95%E4%BE%8B%E9%A2%98%E6%95%B4%E7%90%86/</loc>
     <lastmod>2024-06-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/blog/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/</loc>
+    <loc>http://localhost:1313/blog/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/</loc>
     <lastmod>2023-09-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0-%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0/</loc>
+    <loc>http://localhost:1313/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0-%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0/</loc>
     <lastmod>2023-09-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/blog/%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0/</loc>
+    <loc>http://localhost:1313/blog/%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0/</loc>
     <lastmod>2023-09-19T00:00:00+00:00</lastmod>
   </url>
 </urlset>
